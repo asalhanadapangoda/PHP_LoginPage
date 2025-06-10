@@ -8,6 +8,8 @@ if (isset($_POST["Register"])) {
     require_once 'dbh.inc.php';
     require_once 'functions.inc.php';
 
+     createUser($conn, $name, $email, $username, $pwd);
+
     $emptyInput = emptyInputsSignup($name,$email,$username,$pwd);
     $invalidUid= invalidUid($username);
     $invalidEmail= invalidEmail($email);

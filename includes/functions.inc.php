@@ -48,7 +48,7 @@
     }   
 
     function emtyInputLogin($username, $pwd){
-        $result
+        $result;
         if(empty($name) || empty($pwd)){
             $result=true;
         }else{
@@ -57,11 +57,37 @@
         return $result;
     }
 
-    function LoginUser($username, $pwd){
+    function LoginUser($conn, $username, $pwd){
         $uidExists=uidExists($conn, $username, $username);
         if($uidExists == false){
             header("location:../signup.php?erroe=wornglogin");
             exit();
         }
-        $pwdHashed = 
+        $pwdHashed = $uidExists["usersPwd"];
+        $checkPwd = password_verify($pwd, $pwdHashed);
+
+        if($checkPwd === false){
+            session_start();
+            $_SESSION["userid"] = $uidExists["userId"];
+            $_SESSION["useruid"] = $uidExists["userUid"];
+            header("location:../index.php");
+            exit();
+        }
     }
+
+    function createUser($conn, $name, $email, $username, $pwd) {
+    $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd) VALUES (?, ?, ?, ?)";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../signup.php?error=stmtfailed");
+        exit();
+    }
+
+    $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
+    mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $username, $hashedPwd);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: ../login.php?error=none");
+    exit();
+}
+

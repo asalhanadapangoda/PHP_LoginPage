@@ -8,7 +8,7 @@
 
 
     if($conn == TRUE){
-       // echo "Connection OK";
+       //echo "Connection OK";
     }
 
     ?>
