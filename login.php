@@ -5,7 +5,7 @@
     <form action="includes/login.inc.php" method="post">
         <input type="text" id="fname" name="uid" placeholder="Email / Username">
         <input type="password" id="lname" name="pwd" placeholder="Password">
-        <input type="submit" value="Submit">
+        <input type="submit" name="submit">
     </form>
     <p>New here? <a href ="signup.php">Register.</p>
 </div>
