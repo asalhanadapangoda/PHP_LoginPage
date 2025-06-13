@@ -27,7 +27,7 @@
         return $result;
     }   
    function uidExists($conn, $username, $email) {
-    $sql = "SELECT * FROM users WHERE usersUid = ? AND usersEmail = ?";
+    $sql = "SELECT * FROM users WHERE usersUid = ? OR usersEmail = ?";
     $stmt = mysqli_stmt_init($conn);
     
     if (!mysqli_stmt_prepare($stmt, $sql)) {

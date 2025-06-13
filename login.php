@@ -7,10 +7,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
-</body>
-</html>
-<div class="form">
+    <div class="form">
+        <div class="hederText">Uniconnect</div>
     <form action="includes/login.inc.php" method="post">
         <input type="text" id="fname" name="uid" placeholder="Email / Username">
         <input type="password" id="lname" name="pwd" placeholder="Password">
@@ -18,3 +16,6 @@
     </form>
     <p>New here? <a href ="signup.php">Register.</p>
 </div>
+</body>
+</html>
+
