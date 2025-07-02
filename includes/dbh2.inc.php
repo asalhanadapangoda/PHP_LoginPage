@@ -5,9 +5,9 @@
   $password = "";
   $databasename = "uniconnect";
 
-  $conn1= mysqli_connect($servername,$username,$password,$databasename);
+  $conn2= mysqli_connect($servername,$username,$password,$databasename);
 
-  if($conn1 == TRUE){
+  if($conn2 == TRUE){
        //echo "Connection OK";
     }
 
